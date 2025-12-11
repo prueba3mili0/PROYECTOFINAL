@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAK COSMETICS | Tutoriales y Consejos</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fcf8f4; 
+            color: #4f382a; 
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #4f382a;
+        }
+
+        header {
+            background-color: #efece5; 
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0d9cf;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 3em; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+        }
+        header p { 
+            margin: 10px 0 0; 
+            font-weight: 300; 
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        nav {
+            background-color: #a57c5a; 
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.95em;
+        }
+        nav a:hover { 
+            color: #fcf8f4; 
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 50px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0d9cf;
+        }
+        .texto-suave {
+            text-align: center;
+            color: #8b796d;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+       
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #f0e6da;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-player {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            background-color: #000;
+        }
+
+        .video-card h3 {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #a57c5a;
+            font-size: 1.4em;
+        }
+
+        .video-card p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #8b796d;
+        }
+        
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .tip-card {
+            background: #efece5; 
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .tip-card:hover {
+            background-color: #f9f6f3; 
+        }
+
+        .tip-card h3 {
+            font-size: 1.5em;
+            color: #4f382a;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .tip-card p {
+            font-size: 0.95em;
+            color: #4f382a;
+        }
+        
+        
+        .tip-card h3:before {
+            content: "💡";
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        
+        footer {
+            background: #a57c5a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            nav a { margin: 0 10px; font-size: 0.9em; }
+            h2 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>DAK COSMETICS</h1>
+    <p>Maquillaje que honra nuestra esencia.</p>
+</header>
+
+<nav>
+    <a href="index.html"> INICIO </a>
+    
+</nav>
+
+<div class="container">
+
+    <section id="tutoriales">
+        <h2>Tutoriales de Maquillaje Exclusivos 🎥</h2>
+        <p class="texto-suave">Aprende a usar todos nuestros productos paso a paso. ¡Dale play!</p>
+
+        <div class="video-grid">
+            
+            <div class="video-card">
+                <video class="video-player" controls preload="metadata" poster="miniaturas/base_perfecta.jpg">
+                    <source src="v2.MP4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Base Luminosa y Duradera</h3>
+                <p>Usa la base Origen para un acabado sin imperfecciones y radiante.</p>
+            </div>
+            
+            <div class="video-card">
+                <video class="video-player" controls preload="metadata" poster="miniaturas/ojos_ahumados.jpg">
+                    <source src="v1.MP4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Smokey Eyes con Terracota</h3>
+                <p>Crea un look intenso y elegante con nuestra paleta de sombras Terracota.</p>
+            </div>
+            
+            <div class="video-card">
+                <video class="video-player" controls preload="metadata" poster="miniaturas/labios_mate.jpg">
+                    <source src="v4.MP4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Labios Mate de Impacto</h3>
+                <p>Cómo aplicar los Labiales Luxury para un acabado perfecto y de larga duración.</p>
+            </div>
+            
+            <div class="video-card">
+                <video class="video-player" controls preload="metadata" poster="miniaturas/skincare_dia.jpg">
+                    <source src="v3.MP4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Prepara tu Piel (Skincare)</h3>
+                <p>La rutina esencial de día con nuestro set Skincare para un maquillaje impecable.</p>
+            </div>
+                <div class="video-card">
+                <video class="video-player" controls preload="metadata" poster="miniaturas/labios_mate.jpg">
+                    <source src="v2.MP4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Glow de piel</h3>
+                <p>Cómo aplicar los productos de nuestra linea Glow para una larga duracion .</p>
+            </div>
+            
+            <div class="video-card">
+                <video class="video-player" controls preload="metadata" poster="miniaturas/skincare_dia.jpg">
+                    <source src="v1.MP4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Make up en 5 minutos</h3>
+                <p>La rutina esencial de día para un maquillaje impecable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips">
+        <h2>Recomendaciones Rápidas ✨</h2>
+        <p class="texto-suave">Pequeños trucos para elevar tu look diario.</p>
+        
+        <div class="tips-grid">
+            
+            <div class="tip-card">
+                <h3>Tip de Sellado</h3>
+                <p>Para una base que dure todo el día, sella primero la Zona T (frente, nariz, barbilla) con nuestro Polvo Sellador y luego rocía fijador al final.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Doble Rubor</h3>
+                <p>Aplica primero el Rubor en Barra cremoso para color y luego un toque de sombra terracota similar en polvo para fijar y darle dimensión al pómulo.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Ojo Despierto</h3>
+                <p>Usa una sombra de la Paleta Terracota clara (tono vainilla o beige) en el lagrimal. ¡Esto abre la mirada al instante!</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Volumen Extremo</h3>
+                <p>Antes de aplicar la Máscara de Pestañas, calienta ligeramente el rizador con el secador de pelo. ¡Riza y aplica el rímel rápidamente para un efecto WOW!</p>
+            </div>
+             <div class="tip-card">
+                <h3>Labios de impacto</h3>
+                <p>Después de aplicar tu labial, pon un toque de gloss solo en el centro de los labios. Este pequeño truco crea un efecto óptico de volumen y hace que tus labios luzcan más carnosos sin necesidad de delinearlos demasiado.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Natural mood</h3>
+                <p>Un truco para que tu base se vea natural es usar muy poca cantidad y difuminar con esponja húmeda. Esto evita que el maquillaje se vea pesado y ayuda a que se funda mejor con tu piel.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+     DAK Cosmetics – Tutoriales.
+</footer>
+
+</body>
+</html>

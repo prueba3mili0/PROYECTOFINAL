@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAK COSMETICS | Maquillaje que honra nuestra esencia</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fcf8f4;
+            color: #4f382a;
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #4f382a;
+        }
+
+        header {
+            background-color: #efece5;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0d9cf;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 3em; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+        }
+        header p { 
+            margin: 10px 0 0; 
+            font-weight: 300; 
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        nav {
+            background-color: #a57c5a;
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.95em;
+        }
+        nav a:hover { 
+            color: #fcf8f4; 
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin: 50px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0d9cf;
+        }
+        .texto-suave {
+            text-align: center;
+            color: #8b796d;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .carousel {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto 60px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .carousel-track {
+            display: flex;
+            animation: scroll 24s linear infinite;
+        }
+        .carousel-item { min-width: calc(100% / 3); } 
+        .carousel-item img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            object-fit: cover;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% * 6 / 3)); } 
+        }
+        .carousel:hover .carousel-track {
+             animation-play-state: paused; 
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .producto-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #f0e6da;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .producto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .producto-imagen {
+            width: 180px; height: 180px; 
+            border-radius: 50%;
+            border: 4px solid #a57c5a; 
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        .producto-card:hover .producto-imagen {
+            transform: scale(1.03);
+        }
+
+        .producto-card h3 {
+            margin: 5px 0 8px;
+            font-size: 1.2em;
+        }
+        .precio { 
+            color: #a57c5a; 
+            font-weight: 700; 
+            font-size: 1.3em; 
+        }
+
+        .tarjeta-contenido {
+            background:#fff;
+            border-radius:12px;
+            padding:30px;
+            border:1px solid #f0e6da;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .tarjeta-contenido p {
+            margin: 8px 0;
+        }
+        .tarjeta-contenido iframe {
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; 
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-contenido {
+            background: #fcf8f4;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            gap: 30px;
+            border: 1px solid #e0d9cf;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .modal-imagen {
+            width: 40%;
+            border-radius: 10px;
+            object-fit: cover;
+            align-self: flex-start;
+        }
+        .modal-info {
+             width: 60%;
+        }
+        .modal-titulo {
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 1px solid #e0d9cf;
+            padding-bottom: 10px;
+        }
+        .modal-precio {
+             font-size: 1.5em;
+             color: #a57c5a;
+             margin-bottom: 15px;
+        }
+        .swatches { 
+            display: flex; 
+            gap: 12px; 
+            flex-wrap: wrap; 
+            margin-top: 10px;
+        }
+        .swatch {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            border: 3px solid #fcf8f4; 
+            outline: 1px solid #a57c5a; 
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .swatch:hover {
+            transform: scale(1.1);
+            outline: 3px solid #a57c5a;
+        }
+
+        .modal-cerrar { 
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .modal-cerrar button {
+            background: #a57c5a;
+            border: none;
+            padding: 8px 18px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .modal-cerrar button:hover {
+            background: #8b684c;
+        }
+        
+        footer {
+            background: #a57c5a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            nav a { margin: 0 10px; font-size: 0.9em; }
+            h2 { font-size: 1.8em; }
+            
+            .carousel-item { min-width: 50%; } 
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-100% * 6 / 2)); }
+            }
+            
+            .productos-grid {
+                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .modal-contenido {
+                flex-direction: column;
+                max-width: 450px;
+                padding: 20px;
+            }
+            .modal-imagen, .modal-info {
+                width: 100%;
+                margin: auto;
+            }
+            .modal-imagen {
+                max-width: 200px;
+            }
+            .modal-cerrar {
+                 top: 5px; right: 5px;
+            }
+            .modal-cerrar button {
+                 padding: 5px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>DAK COSMETICS</h1>
+    <p>Maquillaje que honra nuestra esencia.</p>
+</header>
+
+<nav>
+    <a href="#productos">Productos</a>
+    <a href="#historia">Nuestra Historia</a>
+    <a href="prueba.html">Tutoriales</a>
+</nav>
+
+<div class="container">
+
+    <section>
+        <h2>Próxima Colección: Raíces 🌿</h2>
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <img src="carrusel1.JPEG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel3.JPG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel2.JPG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel4.JPG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel5.JPEG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="nose.JPEG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel1.JPEG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel3.JPG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel2.JPG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel4.JPG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrusel5.JPEG" width="600" height="450">
+                </div>
+                <div class="carousel-item">
+                    <img src="nose.JPEG" width="600" height="450">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos">
+        <h2>Productos Destacados ✨</h2>
+        <p class="texto-suave">Haz clic para ver detalles y tonos disponibles</p>
+
+        <div class="productos-grid">
+
+            <div class="producto-card" data-id="p1">
+                <img class="producto-imagen" src="bases3.JPEG">
+                <h3>Base Líquida- Origen</h3>
+                <p class="precio">$200 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p2">
+                <img class="producto-imagen" src="rubor.JPEG">
+                <h3>Rubor en Barra- Luxury</h3>
+                <p class="precio">$90 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p3">
+                <img class="producto-imagen" src="sombras.JPEG">
+                <h3>Paleta de Sombras- Terracota</h3>
+                <p class="precio">$220 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p4">
+                <img class="producto-imagen" src="labiales3.JPEG">
+                <h3>Labiales Mate- Luxury</h3>
+                <p class="precio">$70 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p5">
+                <img class="producto-imagen" src="rimel.JPEG">
+                <h3>Máscara de Pestañas</h3>
+                <p class="precio">$90 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p6">
+                <img class="producto-imagen" src="polvo.JPEG">
+                <h3>Polvo Sellador - Luxury</h3>
+                <p class="precio">$120 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p7">
+                <img class="producto-imagen" src="kitmkup.JPEG">
+                <h3>Set Maquillaje Ébano</h3>
+                <p class="precio">$449 MXN</p>
+            </div>
+
+            <div class="producto-card" data-id="p8">
+                <img class="producto-imagen" src="skincare.JPEG">
+                <h3>Set Skincare Esencial</h3>
+                <p class="precio">$500 MXN</p>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section id="historia">
+        <h2>Nuestra Historia 🤎</h2>
+        <div class="tarjeta-contenido">
+            <p>DAK Cosmetics nace un día, recostada en un sillón, mientras acompañaba a una de mis</p>
+            <p>hermanas mientras trabajaba en algo de su universidad. Ahí surgió la idea de crear unos labiales para su proyecto,</p>
+            <p>buscando algo natural que representara nuestras raíces y la esencia de nuestra tierra.</p>
+            <p>El nombre <b>DAK</b> nace de las iniciales de cada una de nosotras.</p>
+            <p style="margin-top:20px; font-style: italic;">"Ellas son el pilar que ha formado quién soy hoy, y por eso este proyecto lleva un pedacito de todas"</p>
+            <p style="font-weight: 600; margin-top:5px;">— Victoria Mata, Fundadora</p>
+        </div>
+    </section>
+
+</div>
+
+<section id="videos" style="margin-top:60px;">
+    <h2>Conoce más de nuestros productos 🎥</h2>
+
+    <div style="
+        background:#fff;
+        border-radius:12px;
+        padding:30px;
+        border:1px solid #f0e6da;
+        box-shadow:0 2px 5px rgba(0,0,0,0.05);
+        max-width:1100px;
+        margin:auto;
+    ">
+        <p style="text-align:center; color:#8b796d; font-style:italic;">
+            Mira nuestros tutoriales, reseñas y demostraciones
+        </p>
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+            gap:30px;
+            margin-top:30px;
+        ">
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/d4Ql2HxLKCE?si=wBxET97g_RztYXrG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/VhYRDGbaNzQ?si=vhPn6tWM2vG8MVLv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="modalProducto">
+    <div class="modal-contenido">
+
+        <img id="modalImagen" class="modal-imagen">
+
+        <div class="modal-info">
+            <h3 id="modalTitulo" class="modal-titulo"></h3>
+            <p id="modalPrecio" class="modal-precio"></p>
+            <p id="modalDescripcion" class="modal-descripcion"></p>
+
+            <strong>Tonos disponibles:</strong>
+            <div id="modalSwatches" class="swatches"></div>
+        </div>
+
+        <div class="modal-cerrar">
+            <button id="cerrarModal">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+     DAK Cosmetics – Inspirada en tonos tierra, beige y café.
+</footer>
+
+<script>
+
+const products = [
+    {
+        id:"p1",
+        name:"Base Líquida ",
+        price:"$200 MXN",
+        description:"Base luminosa de cobertura media. Textura ligera y enriquecida con vitaminas para un acabado radiante e hidratado.",
+        defaultImage:"bases3.JPEG",
+        tones:[
+            {name:"Claro", color:"#f2d3b6", image:"b2.JPEG"},
+            {name:"Medio", color:"#d1a077", image:"b1.JPEG"},
+            {name:"Oscuro",color:"#8c5e3b", image:"b3.JPEG"}
+        ]
+    },
+    {
+        id:"p2",
+        name:"Rubor en Barra Cremoso",
+        price:"$199 MXN",
+        description:"Rubor en barra cremoso de larga duración, fácil de difuminar. Ideal para un look natural.",
+        defaultImage:"rubor.JPEG"
+    },
+    {
+        id:"p3",
+        name:"Paleta Sombras",
+        price:"$220 MXN",
+        description:"Paleta con 12 tonos cálidos en acabados mate, satinado y shimmer.",
+        defaultImage:"sombras.JPEG"
+    },
+    {
+        id:"p4",
+        name:"Labial  Mate",
+        price:"$70 MXN",
+        description:"Labial líquido mate de alta duración.",
+        defaultImage:"labiales3.JPEG",
+        tones:[
+            {name:"Nude",color:"#c6937d",image:"lab1.JPEG"},
+            {name:"Pumpkin",color:"#FfB266",image:"lab2.JPEG"},
+            {name:"Rojo",color:"#FF0000",image:"lab3.JPEG"}
+        ]
+    },
+    {
+        id:"p5",
+        name:"Máscara de Pestañas Volumen Extremo",
+        price:"$90 MXN",
+        description:"Rímel resistente al agua que aporta volumen.",
+        defaultImage:"rimel.JPEG"
+    },
+    {
+        id:"p6",
+        name:"Polvo Sellador",
+        price:"$120 MXN",
+        description:"Polvo suelto fino que sella el maquillaje.",
+        defaultImage:"polvo.JPEG"
+    },
+    {
+        id:"p7",
+        name:"Set de Maquillaje Ébano Glamour",
+        price:"$449 MXN",
+        description:"Kit básico de maquillaje.",
+        defaultImage:"kitmkup.JPEG"
+    },
+    {
+        id:"p8",
+        name:"Set Skincare Esencial",
+        price:"$500 MXN",
+        description:"Set de cuidado facial completo.",
+        defaultImage:"skincare.JPEG"
+    }
+];
+
+const modal = document.getElementById("modalProducto");
+const modalImg = document.getElementById("modalImagen");
+const modalTitulo = document.getElementById("modalTitulo");
+const modalPrecio = document.getElementById("modalPrecio");
+const modalDesc = document.getElementById("modalDescripcion");
+const modalSwatches = document.getElementById("modalSwatches");
+
+document.querySelectorAll(".producto-card").forEach(card=>{
+    card.onclick=()=>{
+        const p = products.find(prod => prod.id === card.dataset.id);
+        
+        modalImg.src = p.defaultImage || card.querySelector(".producto-imagen").src;
+        modalTitulo.textContent = p.name;
+        modalPrecio.textContent = p.price || card.querySelector(".precio").textContent; 
+        modalDesc.textContent = p.description;
+
+        modalSwatches.innerHTML = "";
+        
+        const tonosHeader = document.querySelector('.modal-info strong');
+        if(p.tones && p.tones.length > 0) {
+            tonosHeader.style.display = 'block';
+            p.tones.forEach(t=>{
+                let s=document.createElement("div");
+                s.className="swatch";
+                s.title = t.name; 
+                s.style.backgroundColor=t.color;
+                s.onclick=()=> modalImg.src=t.image;
+                modalSwatches.appendChild(s);
+            });
+        } else {
+            tonosHeader.style.display = 'none';
+        }
+
+        modal.style.display="flex";
+    };
+});
+
+document.getElementById("cerrarModal").onclick=() => modal.style.display="none";
+modal.onclick=e=>{ if(e.target===modal) modal.style.display="none"; };
+
+</script>
+
+</body>
+</html>
